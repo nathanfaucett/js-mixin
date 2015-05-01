@@ -2,6 +2,20 @@ var keys = require("keys"),
     isNullOrUndefined = require("is_null_or_undefined");
 
 
+module.exports = mixin;
+
+
+function mixin(out) {
+    var i = 0,
+        il = arguments.length - 1;
+
+    while (i++ < il) {
+        baseMixin(out, arguments[i]);
+    }
+
+    return out;
+}
+
 function baseMixin(a, b) {
     var objectKeys = keys(b),
         i = -1,
@@ -16,14 +30,3 @@ function baseMixin(a, b) {
         }
     }
 }
-
-module.exports = function mixin(out) {
-    var i = 0,
-        il = arguments.length - 1;
-
-    while (i++ < il) {
-        baseMixin(out, arguments[i]);
-    }
-
-    return out;
-};
